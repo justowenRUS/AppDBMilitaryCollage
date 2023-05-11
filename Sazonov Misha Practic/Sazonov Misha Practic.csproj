@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{03A78FE3-7C98-4D82-BA90-A88E28F65757}</ProjectGuid>
+    <ProjectGuid>{155346DB-4F7E-429B-8A88-90B18943CDBB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Sazonov_Misha_Practic</RootNamespace>
     <AssemblyName>Sazonov Misha Practic</AssemblyName>
@@ -54,9 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
