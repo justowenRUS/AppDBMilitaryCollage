@@ -1,0 +1,10 @@
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe.config
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.pdb
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.AssemblyReference.cache
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Form1.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Properties.Resources.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.GenerateResource.cache
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CoreCompileInputs.cache
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.exe
+C:\Users\Студент\Desktop\Sazonov Misha Practic\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb
