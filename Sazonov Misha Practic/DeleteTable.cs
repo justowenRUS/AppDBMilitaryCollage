@@ -13,6 +13,7 @@ namespace Sazonov_Misha_Practic
 {
     public partial class DeleteTable : Form
     {
+
         public DeleteTable()
         {
             InitializeComponent();
@@ -28,12 +29,17 @@ namespace Sazonov_Misha_Practic
             // Удаление таблицы
             OleDbCommand command = new OleDbCommand();
             command.Connection = connection;
-            command.CommandText = "DROP TABLE users";
+            command.CommandText = "DROP TABLE " + textBox1.Text;
             command.ExecuteNonQuery();
 
             // Закрытие подключения к базе данных
             connection.Close();
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

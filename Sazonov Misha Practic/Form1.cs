@@ -39,5 +39,21 @@ namespace Sazonov_Misha_Practic
             DeleteTable form3 = new DeleteTable();
             form3.Show();
         }
+
+        private void менюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void вводЗначенийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InputTable form4 = new InputTable(tablename);
+            form4.Show();
+        }
+
+        private void работаСТаблицейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

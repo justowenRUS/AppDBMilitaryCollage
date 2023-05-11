@@ -11,35 +11,33 @@ using System.Data.OleDb;
 
 namespace Sazonov_Misha_Practic
 {
-    public partial class CreateTable : Form
+    public partial class InputTable : Form
     {
-        public CreateTable()
+
+        private string tablename;
+
+        public InputTable()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Создание подключения к базе данных
-            string tablename = textBox1.Text;
             OleDbConnection connection = new OleDbConnection();
             connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;";
             connection.Open();
-
-            // Создание листа в базе данных
             OleDbCommand command = new OleDbCommand();
+            command = new OleDbCommand();
             command.Connection = connection;
-            command.CommandText = "CREATE TABLE " + tablename + " (UserId INT PRIMARY KEY, FirstName VARCHAR(50), SoName VARCHAR(50), Log VARCHAR(23), Pass VARCHAR(25))";
+            command.CommandText = "INSERT INTO " + tablename + " (UserId, FirstName, SoName, Log, Pass) VALUES (@values1, @values2, @values3, @values4, @values5)";
+            command.Parameters.AddWithValue("@value1", textBox1.Text);
+            command.Parameters.AddWithValue("@value2", textBox2.Text);
+            command.Parameters.AddWithValue("@value3", textBox3.Text);
+            command.Parameters.AddWithValue("@value4", textBox4.Text);
+            command.Parameters.AddWithValue("@value5", textBox5.Text);
             command.ExecuteNonQuery();
-
-            // Закрытие подключения к базе данных
             connection.Close();
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
