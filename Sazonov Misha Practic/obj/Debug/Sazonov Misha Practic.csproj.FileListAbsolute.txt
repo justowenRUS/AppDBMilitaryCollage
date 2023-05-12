@@ -14,3 +14,5 @@ C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazon
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.CreateTable.resources
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.DeleteTable.resources
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.InputTable.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Authorization.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.userstable.resources

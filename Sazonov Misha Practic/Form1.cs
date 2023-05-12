@@ -47,7 +47,7 @@ namespace Sazonov_Misha_Practic
 
         private void вводЗначенийToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InputTable form4 = new InputTable(tablename);
+            InputTable form4 = new InputTable();
             form4.Show();
         }
 

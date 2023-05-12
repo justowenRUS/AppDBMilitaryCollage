@@ -14,8 +14,6 @@ namespace Sazonov_Misha_Practic
     public partial class InputTable : Form
     {
 
-        private string tablename;
-
         public InputTable()
         {
             InitializeComponent();
@@ -23,21 +21,30 @@ namespace Sazonov_Misha_Practic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OleDbConnection connection = new OleDbConnection();
-            connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;";
-            connection.Open();
-            OleDbCommand command = new OleDbCommand();
-            command = new OleDbCommand();
-            command.Connection = connection;
-            command.CommandText = "INSERT INTO " + tablename + " (UserId, FirstName, SoName, Log, Pass) VALUES (@values1, @values2, @values3, @values4, @values5)";
-            command.Parameters.AddWithValue("@value1", textBox1.Text);
-            command.Parameters.AddWithValue("@value2", textBox2.Text);
-            command.Parameters.AddWithValue("@value3", textBox3.Text);
-            command.Parameters.AddWithValue("@value4", textBox4.Text);
-            command.Parameters.AddWithValue("@value5", textBox5.Text);
-            command.ExecuteNonQuery();
-            connection.Close();
-            this.Close();
+            if (true)
+            {
+                OleDbConnection connection = new OleDbConnection();
+                connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;";
+                connection.Open();
+                OleDbCommand command = new OleDbCommand();
+                command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandText = "INSERT INTO users (UserId, FirstName, SoName, Log, Pass, Policy) VALUES (@value1, @value2, @value3, @value4, @value5, @value6)";
+                command.Parameters.AddWithValue("@value1", textBox1.Text);
+                command.Parameters.AddWithValue("@value2", textBox2.Text);
+                command.Parameters.AddWithValue("@value3", textBox3.Text);
+                command.Parameters.AddWithValue("@value4", textBox4.Text);
+                command.Parameters.AddWithValue("@value5", textBox5.Text);
+                command.Parameters.AddWithValue("@value6", comboBox1.Text);
+                command.ExecuteNonQuery();
+                connection.Close();
+                this.Close();
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

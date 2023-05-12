@@ -29,7 +29,7 @@ namespace Sazonov_Misha_Practic
             // Удаление таблицы
             OleDbCommand command = new OleDbCommand();
             command.Connection = connection;
-            command.CommandText = "DROP TABLE " + textBox1.Text;
+            command.CommandText = "DROP TABLE users";
             command.ExecuteNonQuery();
 
             // Закрытие подключения к базе данных
