@@ -35,6 +35,7 @@ namespace Sazonov_Misha_Practic
             this.удалитьТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работаСТаблицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вводЗначенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вводДанныхПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,21 +63,22 @@ namespace Sazonov_Misha_Practic
             // создатьТаблицуToolStripMenuItem
             // 
             this.создатьТаблицуToolStripMenuItem.Name = "создатьТаблицуToolStripMenuItem";
-            this.создатьТаблицуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.создатьТаблицуToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.создатьТаблицуToolStripMenuItem.Text = "Создать таблицу";
             this.создатьТаблицуToolStripMenuItem.Click += new System.EventHandler(this.создатьТаблицуToolStripMenuItem_Click);
             // 
             // удалитьТаблицуToolStripMenuItem
             // 
             this.удалитьТаблицуToolStripMenuItem.Name = "удалитьТаблицуToolStripMenuItem";
-            this.удалитьТаблицуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьТаблицуToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.удалитьТаблицуToolStripMenuItem.Text = "Удалить таблицу";
             this.удалитьТаблицуToolStripMenuItem.Click += new System.EventHandler(this.удалитьТаблицуToolStripMenuItem_Click);
             // 
             // работаСТаблицейToolStripMenuItem
             // 
             this.работаСТаблицейToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.вводЗначенийToolStripMenuItem});
+            this.вводЗначенийToolStripMenuItem,
+            this.вводДанныхПользователяToolStripMenuItem});
             this.работаСТаблицейToolStripMenuItem.Name = "работаСТаблицейToolStripMenuItem";
             this.работаСТаблицейToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
             this.работаСТаблицейToolStripMenuItem.Text = "Работа с таблицей";
@@ -88,6 +90,13 @@ namespace Sazonov_Misha_Practic
             this.вводЗначенийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.вводЗначенийToolStripMenuItem.Text = "Ввод значений";
             this.вводЗначенийToolStripMenuItem.Click += new System.EventHandler(this.вводЗначенийToolStripMenuItem_Click);
+            // 
+            // вводДанныхПользователяToolStripMenuItem
+            // 
+            this.вводДанныхПользователяToolStripMenuItem.Name = "вводДанныхПользователяToolStripMenuItem";
+            this.вводДанныхПользователяToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.вводДанныхПользователяToolStripMenuItem.Text = "Ввод данных пользователя";
+            this.вводДанныхПользователяToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхПользователяToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -114,6 +123,7 @@ namespace Sazonov_Misha_Practic
         private System.Windows.Forms.ToolStripMenuItem удалитьТаблицуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem работаСТаблицейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вводЗначенийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вводДанныхПользователяToolStripMenuItem;
     }
 }
 

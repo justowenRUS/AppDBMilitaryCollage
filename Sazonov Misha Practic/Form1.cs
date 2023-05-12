@@ -55,5 +55,11 @@ namespace Sazonov_Misha_Practic
         {
 
         }
+
+        private void вводДанныхПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            userbaza userbd = new userbaza();
+            userbd.Show();
+        }
     }
 }
