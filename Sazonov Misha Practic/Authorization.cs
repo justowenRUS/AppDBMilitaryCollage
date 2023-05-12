@@ -68,8 +68,9 @@ namespace Sazonov_Misha_Practic
                             // Аутентификация успешна для администратора
                             MessageBox.Show("Вы успешно авторизованы как администратор.");
                             Form1 form1 = new Form1();
-                            form1.Show();
                             this.Hide();
+                            form1.ShowDialog();
+                            this.Close();
                             // Дополнительные действия после аутентификации администратора
                         }
                         else
@@ -77,7 +78,9 @@ namespace Sazonov_Misha_Practic
                             // Аутентификация успешна для другого пользователя
                             MessageBox.Show("Вы успешно авторизованы.");
                             userstable users = new userstable();
-                            users.Show();
+                            this.Hide();
+                            users.ShowDialog();
+                            this.Close();
                             // Дополнительные действия после аутентификации пользователя
                         }
                     }

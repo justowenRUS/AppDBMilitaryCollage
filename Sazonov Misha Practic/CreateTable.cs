@@ -20,8 +20,7 @@ namespace Sazonov_Misha_Practic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (true)
-            {
+            string tablename = textBox1.Text;
                 // Создание подключения к базе данных
                 OleDbConnection connection = new OleDbConnection();
                 connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;";
@@ -30,13 +29,16 @@ namespace Sazonov_Misha_Practic
                 // Создание листа в базе данных
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                command.CommandText = "CREATE TABLE users (UserId INT PRIMARY KEY, FirstName VARCHAR(50), SoName VARCHAR(50), Log VARCHAR(23), Pass VARCHAR(25), Policy VARCHAR(25))";
+                command.CommandText = "CREATE TABLE " + tablename + " (UserId INT PRIMARY KEY, FirstName VARCHAR(50), SoName VARCHAR(50), Log VARCHAR(23), Pass VARCHAR(25), Policy VARCHAR(25))";
                 command.ExecuteNonQuery();
 
                 // Закрытие подключения к базе данных
                 connection.Close();
-            }
-            this.Close();
+                MessageBox.Show("Таблица успешно создана");
+                Form1 form1 = new Form1();
+                this.Hide();
+                form1.ShowDialog();
+                this.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
