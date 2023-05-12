@@ -69,5 +69,20 @@ namespace Sazonov_Misha_Practic
             userbd.ShowDialog();
             this.Close();
         }
+
+        private void темнаяТемаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Black;
+        }
+
+        private void голубаяТемаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Blue;
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

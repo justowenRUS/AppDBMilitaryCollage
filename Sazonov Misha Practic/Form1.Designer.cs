@@ -36,12 +36,19 @@ namespace Sazonov_Misha_Practic
             this.работаСТаблицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вводЗначенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вводДанныхПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.внешнийВидToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.темнаяТемаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.голубаяТемаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.настройкиToolStripMenuItem,
             this.менюToolStripMenuItem,
             this.работаСТаблицейToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -87,7 +94,7 @@ namespace Sazonov_Misha_Practic
             // вводЗначенийToolStripMenuItem
             // 
             this.вводЗначенийToolStripMenuItem.Name = "вводЗначенийToolStripMenuItem";
-            this.вводЗначенийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.вводЗначенийToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.вводЗначенийToolStripMenuItem.Text = "Ввод значений";
             this.вводЗначенийToolStripMenuItem.Click += new System.EventHandler(this.вводЗначенийToolStripMenuItem_Click);
             // 
@@ -97,6 +104,52 @@ namespace Sazonov_Misha_Practic
             this.вводДанныхПользователяToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.вводДанныхПользователяToolStripMenuItem.Text = "Ввод данных пользователя";
             this.вводДанныхПользователяToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхПользователяToolStripMenuItem_Click);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.внешнийВидToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem,
+            this.выходToolStripMenuItem});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // внешнийВидToolStripMenuItem
+            // 
+            this.внешнийВидToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.темнаяТемаToolStripMenuItem,
+            this.голубаяТемаToolStripMenuItem});
+            this.внешнийВидToolStripMenuItem.Name = "внешнийВидToolStripMenuItem";
+            this.внешнийВидToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.внешнийВидToolStripMenuItem.Text = "Внешний вид";
+            // 
+            // темнаяТемаToolStripMenuItem
+            // 
+            this.темнаяТемаToolStripMenuItem.Name = "темнаяТемаToolStripMenuItem";
+            this.темнаяТемаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.темнаяТемаToolStripMenuItem.Text = "Темная тема";
+            this.темнаяТемаToolStripMenuItem.Click += new System.EventHandler(this.темнаяТемаToolStripMenuItem_Click);
+            // 
+            // голубаяТемаToolStripMenuItem
+            // 
+            this.голубаяТемаToolStripMenuItem.Name = "голубаяТемаToolStripMenuItem";
+            this.голубаяТемаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.голубаяТемаToolStripMenuItem.Text = "Голубая тема";
+            this.голубаяТемаToolStripMenuItem.Click += new System.EventHandler(this.голубаяТемаToolStripMenuItem_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -124,6 +177,12 @@ namespace Sazonov_Misha_Practic
         private System.Windows.Forms.ToolStripMenuItem работаСТаблицейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вводЗначенийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вводДанныхПользователяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem внешнийВидToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem темнаяТемаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem голубаяТемаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
     }
 }
 
