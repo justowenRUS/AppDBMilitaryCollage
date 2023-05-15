@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OleDb, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -79,6 +85,12 @@
     <Compile Include="InputTable.Designer.cs">
       <DependentUpon>InputTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="polzovatel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="polzovatel.Designer.cs">
+      <DependentUpon>polzovatel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="userbaza.cs">
@@ -107,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InputTable.resx">
       <DependentUpon>InputTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="polzovatel.resx">
+      <DependentUpon>polzovatel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
