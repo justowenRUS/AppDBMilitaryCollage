@@ -152,5 +152,21 @@ namespace Sazonov_Misha_Practic
             document.Close();
         
         }
+
+        private void выводДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vd vdd = new vd();
+            this.Hide();
+            vdd.ShowDialog();
+            this.Close();
+        }
+
+        private void вводДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vid vivod = new vid();
+            this.Hide();
+            vivod.ShowDialog();
+            this.Close();
+        }
     }
 }

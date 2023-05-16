@@ -105,6 +105,18 @@
     <Compile Include="userstable.Designer.cs">
       <DependentUpon>userstable.cs</DependentUpon>
     </Compile>
+    <Compile Include="vd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vd.Designer.cs">
+      <DependentUpon>vd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vid.Designer.cs">
+      <DependentUpon>vid.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userstable.resx">
       <DependentUpon>userstable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vd.resx">
+      <DependentUpon>vd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vid.resx">
+      <DependentUpon>vid.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -68,6 +68,7 @@ namespace Sazonov_Misha_Practic
                     command.Parameters.AddWithValue("@value5", textBox5.Text);
                     command.Parameters.AddWithValue("@value6", comboBox1.Text);
                     command.ExecuteNonQuery();
+                    connection.Close();
 
                     // Пользователь успешно добавлен
                     MessageBox.Show("Пользователь успешно добавлен.");

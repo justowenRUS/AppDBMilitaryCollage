@@ -21,3 +21,5 @@ C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazon
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\itextsharp.dll
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\itextsharp.xml
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.polzovatel.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vd.resources
+C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vid.resources
