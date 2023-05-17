@@ -41,7 +41,6 @@ namespace Sazonov_Misha_Practic
             this.button2 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,18 +49,19 @@ namespace Sazonov_Misha_Practic
             this.label10 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(86, 147);
+            this.textBox2.Location = new System.Drawing.Point(86, 159);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 14;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 124);
+            this.textBox1.Location = new System.Drawing.Point(73, 136);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
@@ -71,7 +71,7 @@ namespace Sazonov_Misha_Practic
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(23, 173);
+            this.label4.Location = new System.Drawing.Point(23, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 12;
@@ -82,7 +82,7 @@ namespace Sazonov_Misha_Practic
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(23, 150);
+            this.label3.Location = new System.Drawing.Point(23, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 11;
@@ -93,7 +93,7 @@ namespace Sazonov_Misha_Practic
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(23, 127);
+            this.label2.Location = new System.Drawing.Point(23, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 10;
@@ -117,7 +117,7 @@ namespace Sazonov_Misha_Practic
             this.comboBox1.Items.AddRange(new object[] {
             "Женский",
             "Мужской"});
-            this.comboBox1.Location = new System.Drawing.Point(73, 174);
+            this.comboBox1.Location = new System.Drawing.Point(73, 186);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 15;
@@ -128,7 +128,7 @@ namespace Sazonov_Misha_Practic
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label8.Location = new System.Drawing.Point(579, 174);
+            this.label8.Location = new System.Drawing.Point(580, 60);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 22);
             this.label8.TabIndex = 16;
@@ -136,7 +136,7 @@ namespace Sazonov_Misha_Practic
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(595, 312);
+            this.button1.Location = new System.Drawing.Point(604, 219);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 37);
             this.button1.TabIndex = 23;
@@ -156,7 +156,7 @@ namespace Sazonov_Misha_Practic
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(73, 98);
+            this.textBox5.Location = new System.Drawing.Point(73, 110);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 26;
@@ -166,28 +166,18 @@ namespace Sazonov_Misha_Practic
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(23, 101);
+            this.label9.Location = new System.Drawing.Point(23, 113);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 25;
             this.label9.Text = "Id: ";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(73, 198);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 34);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "Создать таблицу";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(545, 238);
+            this.label7.Location = new System.Drawing.Point(554, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 17;
@@ -198,7 +188,7 @@ namespace Sazonov_Misha_Practic
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(545, 261);
+            this.label6.Location = new System.Drawing.Point(554, 168);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 18;
@@ -209,7 +199,7 @@ namespace Sazonov_Misha_Practic
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(545, 284);
+            this.label5.Location = new System.Drawing.Point(554, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 19;
@@ -217,14 +207,14 @@ namespace Sazonov_Misha_Practic
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(595, 235);
+            this.textBox4.Location = new System.Drawing.Point(604, 142);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 20;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(608, 258);
+            this.textBox3.Location = new System.Drawing.Point(617, 165);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 21;
@@ -234,7 +224,7 @@ namespace Sazonov_Misha_Practic
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(545, 212);
+            this.label10.Location = new System.Drawing.Point(554, 119);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 27;
@@ -242,17 +232,27 @@ namespace Sazonov_Misha_Practic
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(595, 209);
+            this.textBox6.Location = new System.Drawing.Point(604, 116);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 28;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(595, 284);
+            this.textBox7.Location = new System.Drawing.Point(604, 191);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 29;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(718, 440);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(121, 37);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "На главную";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // vd
             // 
@@ -303,7 +303,6 @@ namespace Sazonov_Misha_Practic
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -312,5 +311,6 @@ namespace Sazonov_Misha_Practic
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button3;
     }
 }

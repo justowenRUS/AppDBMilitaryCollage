@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Sazonov_Misha_Practic
 {
@@ -18,81 +20,162 @@ namespace Sazonov_Misha_Practic
             InitializeComponent();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int count = (int)numericUpDown1.Value;
+
+            for (int i = 0; i < count; i++)
+            {
+                // Создание label и textbox для названия колонки
+                Label nameLabel = new Label();
+                nameLabel.Text = "Название колонки:";
+                TextBox nameTextBox = new TextBox();
+                nameLabel.ForeColor = SystemColors.ButtonFace;
+
+                // Создание label и combobox для выбора типа данных
+                Label typeLabel = new Label();
+                typeLabel.Text = "Тип данных:";
+                ComboBox typeComboBox = new ComboBox();
+                typeComboBox.Items.Add("INT");
+                typeComboBox.Items.Add("VARCHAR(25)");
+                typeLabel.ForeColor = SystemColors.ButtonFace;
+
+                // Создание контейнера Panel для расположения элементов горизонтально
+                Panel panel = new Panel();
+                panel.Dock = DockStyle.Top;
+
+                // Задание размеров элементов
+                nameLabel.Size = new Size(100, 20);
+                nameTextBox.Size = new Size(100, 20);
+                typeLabel.Size = new Size(100, 20);
+                typeComboBox.Size = new Size(100, 20);
+
+                // Установка позиции элементов в контейнере Panel
+                nameTextBox.Location = new Point(0, 0);
+                nameLabel.Location = new Point(110, 0);
+                typeComboBox.Location = new Point(220, 0);
+                typeLabel.Location = new Point(330, 0);
+
+                // Установка отступа между элементами
+                nameLabel.Margin = new Padding(0, 0, 10, 0); // Установите желаемое значение отступа
+
+                // Добавление элементов в контейнер Panel
+                panel.Controls.Add(nameTextBox);
+                panel.Controls.Add(nameLabel);
+                panel.Controls.Add(typeComboBox);
+                panel.Controls.Add(typeLabel);
+
+                // Добавление контейнера Panel на форму
+                panel1.Controls.Add(panel);
+
+                while (panel1.Controls.Count > count)
+                    {
+                        panel1.Controls.RemoveAt(panel1.Controls.Count - 1);
+                    }
+            }
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             string tableName = textBox1.Text;
-            string column1 = textBox2.Text;
-            string column2 = textBox3.Text;
-            string column3 = textBox4.Text;
-            string column4 = textBox5.Text;
+            string configFile = "config.ini";
+            string databasePath;
 
-            string dataType1 = textBox6.Text;
-            string dataType2 = textBox7.Text;
-            string dataType3 = textBox8.Text;
-            string dataType4 = textBox9.Text;
-
-            // Проверяем, что все колонки и типы данных заполнены
-            if (string.IsNullOrEmpty(column1) || string.IsNullOrEmpty(column2) ||
-                string.IsNullOrEmpty(column3) || string.IsNullOrEmpty(column4) ||
-                string.IsNullOrEmpty(dataType1) || string.IsNullOrEmpty(dataType2) ||
-                string.IsNullOrEmpty(dataType3) || string.IsNullOrEmpty(dataType4))
+            // Чтение значения пути из ini-файла
+            if (File.Exists(configFile))
             {
-                MessageBox.Show("Пожалуйста, заполните все колонки и типы данных.");
+                IniFile ini = new IniFile(configFile);
+                databasePath = ini.GetValue("Database", "Path");
+            }
+            else
+            {
+                // Обработка ситуации, когда ini-файл отсутствует
+                // или не содержит нужных настроек
                 return;
             }
 
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
+            // Создание строки подключения к базе данных
+            string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={databasePath};Persist Security Info=False";
+
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 connection.Open();
 
-                string createTableQuery = $"CREATE TABLE {tableName} ({column1} {dataType1}, {column2} {dataType2}, {column3} {dataType3}, {column4} {dataType4})";
-                OleDbCommand command = new OleDbCommand(createTableQuery, connection);
-                command.ExecuteNonQuery();
+                // Проверка существования таблицы
+                DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                bool tableExists = false;
 
+                foreach (DataRow row in schemaTable.Rows)
+                {
+                    string existingTableName = row["TABLE_NAME"].ToString();
+
+                    if (existingTableName == tableName)
+                    {
+                        tableExists = true;
+                        break;
+                    }
+                }
+
+                if (tableExists)
+                {
+                    MessageBox.Show($"Таблица с именем '{tableName}' уже существует.");
+                    return;
+                }
+
+                // Создание SQL-запроса для создания таблицы
+                StringBuilder queryBuilder = new StringBuilder();
+                queryBuilder.Append($"CREATE TABLE {tableName} (");
+
+                // Получение информации о колонках из элементов управления
+                foreach (Control control in panel1.Controls)
+                {
+                    if (control is Panel panel)
+                    {
+                        foreach (Control innerControl in panel.Controls)
+                        {
+                            if (innerControl is TextBox nameTextBox)
+                            {
+                                string columnName = nameTextBox.Text;
+                                queryBuilder.Append($"{columnName} ");
+                            }
+                            else if (innerControl is ComboBox typeComboBox)
+                            {
+                                string columnType = typeComboBox.SelectedItem.ToString();
+                                queryBuilder.Append($"{columnType}, ");
+                            }
+                        }
+                    }
+                }
+
+                // Удаление последней запятой и пробела из запроса
+                queryBuilder.Length -= 2;
+                queryBuilder.Append(")");
+
+                // Создание команды и выполнение запроса
+                using (OleDbCommand command = new OleDbCommand(queryBuilder.ToString(), connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Таблица успешно создана.");
                 connection.Close();
-                Form1 form1 = new Form1();
-                this.Hide();
-                form1.ShowDialog();
-                this.Close();
             }
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            label3.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox2.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
-            button3.Visible = true;
-            label7.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox6.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            label5.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox4.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
-            button5.Visible = true;
-            label9.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox8.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            label4.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox3.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
-            button4.Visible = true;
-            label8.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox7.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
+           
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            label6.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox5.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
-            button6.Visible = true;
-            label10.Visible = true; // Здесь label1 - это ваш Label, который должен появиться
-            textBox9.Visible = true; // Здесь textBox1 - это ваш TextBox, который должен появиться
+           
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -102,6 +185,63 @@ namespace Sazonov_Misha_Practic
             form1.ShowDialog();
             this.Close();
         }
-    } 
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+    }
+    public class IniFile
+    {
+        private readonly Dictionary<string, Dictionary<string, string>> iniData;
+
+        public IniFile(string filePath)
+        {
+            iniData = new Dictionary<string, Dictionary<string, string>>();
+            string currentSection = null;
+
+            foreach (string line in File.ReadLines(filePath))
+            {
+                string trimmedLine = line.Trim();
+
+                if (string.IsNullOrWhiteSpace(trimmedLine))
+                    continue;
+
+                if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
+                {
+                    currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
+                    iniData[currentSection] = new Dictionary<string, string>();
+                }
+                else if (currentSection != null && trimmedLine.Contains("="))
+                {
+                    string[] parts = trimmedLine.Split('=');
+                    string key = parts[0].Trim();
+                    string value = parts[1].Trim();
+                    iniData[currentSection][key] = value;
+                }
+            }
+        }
+
+        public string GetValue(string section, string key)
+        {
+            if (iniData.ContainsKey(section) && iniData[section].ContainsKey(key))
+            {
+                return iniData[section][key];
+            }
+
+            return null;
+        }
+    }
+
+
+    // Вспомогательный класс для импорта функций чтения и записи ini-файлов
+    internal static class NativeMethods
+    {
+        [DllImport("kernel32.dll")]
+        internal static extern int GetPrivateProfileString(string section, string key, string defaultValue, StringBuilder value, int size, string filePath);
+
+        [DllImport("kernel32.dll")]
+        internal static extern bool WritePrivateProfileString(string section, string key, string value, string filePath);
+    }
 }
 

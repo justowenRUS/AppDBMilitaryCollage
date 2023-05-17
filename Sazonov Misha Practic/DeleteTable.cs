@@ -46,39 +46,47 @@ namespace Sazonov_Misha_Practic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;Persist Security Info=False"))
+            string tableName = comboBox1.SelectedItem.ToString();
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;Persist Security Info=False";
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 connection.Open();
 
-                string tableName = comboBox1.Text;
-
                 // Проверка существования таблицы
-                string checkTableQuery = $"SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '{tableName}'";
-                using (OleDbCommand checkTableCommand = new OleDbCommand(checkTableQuery, connection))
+                DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                bool tableExists = false;
+
+                foreach (DataRow row in schemaTable.Rows)
                 {
-                    int tableCountBefore = (int)checkTableCommand.ExecuteScalar();
+                    string existingTableName = row["TABLE_NAME"].ToString();
 
-                    // Удаление таблицы
-                    OleDbCommand dropTableCommand = new OleDbCommand();
-                    dropTableCommand.Connection = connection;
-                    dropTableCommand.CommandText = $"DROP TABLE {tableName}";
-                    dropTableCommand.ExecuteNonQuery();
-
-                    // Проверка успешного удаления таблицы
-                    int tableCountAfter = (int)checkTableCommand.ExecuteScalar();
-
-                    if (tableCountBefore > tableCountAfter)
+                    if (existingTableName == tableName)
                     {
-                        MessageBox.Show($"Таблица '{tableName}' успешно удалена.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Не удалось удалить таблицу '{tableName}'.");
+                        tableExists = true;
+                        break;
                     }
                 }
+
+                if (!tableExists)
+                {
+                    MessageBox.Show($"Таблица с именем '{tableName}' не существует.");
+                    return;
+                }
+
+                // Создание SQL-запроса для удаления таблицы
+                string query = $"DROP TABLE {tableName}";
+
+                // Создание команды и выполнение запроса
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                MessageBox.Show($"Таблица '{tableName}' успешно удалена.");
                 connection.Close();
-                ShowTables();
             }
+            ShowTables();
         }
 
 
@@ -96,6 +104,14 @@ namespace Sazonov_Misha_Practic
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            this.Hide();
+            frm1.ShowDialog();
+            this.Close();
         }
     }
 }

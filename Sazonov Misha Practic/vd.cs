@@ -31,17 +31,7 @@ namespace Sazonov_Misha_Practic
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Создание таблицы "Students"
-            string createStudentsTableQuery = "CREATE TABLE Students (UserID INT PRIMARY KEY, FirstName TEXT, SoName TEXT)";
-            OleDbCommand createStudentsTableCommand = new OleDbCommand(createStudentsTableQuery, connection);
-            createStudentsTableCommand.ExecuteNonQuery();
-
-            // Создание таблицы "Gender"
-            string createGenderTableQuery = "CREATE TABLE Gender (UserID INT PRIMARY KEY, Gender TEXT)";
-            OleDbCommand createGenderTableCommand = new OleDbCommand(createGenderTableQuery, connection);
-            createGenderTableCommand.ExecuteNonQuery();
-
-            MessageBox.Show("Таблицы успешно созданы.");
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,7 +64,7 @@ namespace Sazonov_Misha_Practic
             int userID = int.Parse(textBox5.Text);
             string firstName = textBox1.Text;
             string soName = textBox2.Text;
-            string gender = textBox7.Text;
+            string gender = comboBox1.Text;
 
             // Вставка данных в таблицу "Students"
             string insertStudentsQuery = $"INSERT INTO Students (UserID, FirstName, SoName) VALUES ({userID}, '{firstName}', '{soName}')";
@@ -87,6 +77,14 @@ namespace Sazonov_Misha_Practic
             insertGenderCommand.ExecuteNonQuery();
 
             MessageBox.Show("Данные успешно добавлены.");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            this.Hide();
+            frm1.ShowDialog();
+            this.Close();
         }
     }
 }
