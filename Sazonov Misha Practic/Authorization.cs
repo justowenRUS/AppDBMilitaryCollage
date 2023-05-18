@@ -22,14 +22,79 @@ namespace Sazonov_Misha_Practic
             InitializeControls();
         }
 
+        //private void InitializeForm()
+        //{
+
+        //    FormBorderStyle = FormBorderStyle.FixedSingle;
+        //    MaximizeBox = false;
+        //    MinimizeBox = false;
+        //    StartPosition = FormStartPosition.CenterScreen;
+        //    BackColor = Color.White;
+        //    Font = new Font("Arial", 12, FontStyle.Regular);
+        //}
+
+        //private void InitializeControls()
+        //{
+        //    usernameLabel = new Label();
+        //    usernameLabel.Text = "Ваш логин:";
+        //    usernameLabel.AutoSize = true;
+        //    usernameLabel.Location = new Point(50, 100);
+        //    usernameLabel.Font = Font;
+        //    Controls.Add(usernameLabel);
+
+        //    usernameTextBox = new TextBox();
+        //    usernameTextBox.Size = new Size(200, 30);
+        //    usernameTextBox.Location = new Point(150, 100);
+        //    usernameTextBox.BorderStyle = BorderStyle.FixedSingle;
+        //    usernameTextBox.Font = Font;
+        //    usernameTextBox.Margin = new Padding(0); // Установка отступов равных 0
+        //    Controls.Add(usernameTextBox);
+
+        //    passwordLabel = new Label();
+        //    passwordLabel.Text = "Пароль:";
+        //    passwordLabel.AutoSize = true;
+        //    passwordLabel.Location = new Point(50, 150);
+        //    passwordLabel.Font = Font;
+        //    Controls.Add(passwordLabel);
+
+        //    passwordTextBox = new TextBox();
+        //    passwordTextBox.Size = new Size(200, 30);
+        //    passwordTextBox.Location = new Point(150, 150);
+        //    passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
+        //    passwordTextBox.Font = Font;
+        //    passwordTextBox.PasswordChar = '*';
+        //    passwordTextBox.Margin = new Padding(0); // Установка отступов равных 0
+        //    Controls.Add(passwordTextBox);
+
+        //    loginButton = new Button();
+        //    loginButton.Size = new Size(100, 30);
+        //    loginButton.Location = new Point((Width - loginButton.Width) / 2, 200);
+        //    loginButton.FlatStyle = FlatStyle.Flat;
+        //    loginButton.FlatAppearance.BorderSize = 0;
+        //    loginButton.BackColor = Color.FromArgb(0, 122, 204);
+        //    loginButton.ForeColor = Color.White;
+        //    loginButton.Font = Font;
+        //    loginButton.Text = "Войти";
+        //    loginButton.Click += LoginButton_Click;
+        //    loginButton.Margin = new Padding(0); // Установка отступов равных 0
+        //    Controls.Add(loginButton);
+
+        //    Label capsLockLabel = new Label();
+        //    capsLockLabel.AutoSize = true;
+        //    capsLockLabel.ForeColor = Color.Red;
+        //    capsLockLabel.Location = new Point(passwordTextBox.Right + 5, passwordTextBox.Top);
+        //    capsLockLabel.Text = "CapsLock";
+        //    capsLockLabel.Visible = false;
+        //    Controls.Add(capsLockLabel);
+        //}
+
         private void InitializeForm()
         {
-
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(44, 62, 80); // Прикольный цвет фона
             Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
@@ -39,31 +104,35 @@ namespace Sazonov_Misha_Practic
             usernameLabel.Text = "Ваш логин:";
             usernameLabel.AutoSize = true;
             usernameLabel.Location = new Point(50, 100);
-            usernameLabel.Font = Font;
+            usernameLabel.Font = new Font("Arial", 14, FontStyle.Bold); // Прикольный шрифт и стиль для метки
+            usernameLabel.ForeColor = Color.White; // Прикольный цвет текста
             Controls.Add(usernameLabel);
 
             usernameTextBox = new TextBox();
             usernameTextBox.Size = new Size(200, 30);
             usernameTextBox.Location = new Point(150, 100);
-            usernameTextBox.BorderStyle = BorderStyle.FixedSingle;
-            usernameTextBox.Font = Font;
-            usernameTextBox.Margin = new Padding(0); // Установка отступов равных 0
+            usernameTextBox.BorderStyle = BorderStyle.None; // Убрана граница текстового поля
+            usernameTextBox.Font = new Font("Arial", 12, FontStyle.Regular);
+            usernameTextBox.BackColor = Color.FromArgb(236, 240, 241); // Прикольный цвет фона текстового поля
+            usernameTextBox.ForeColor = Color.FromArgb(44, 62, 80); // Прикольный цвет текста
             Controls.Add(usernameTextBox);
 
             passwordLabel = new Label();
             passwordLabel.Text = "Пароль:";
             passwordLabel.AutoSize = true;
             passwordLabel.Location = new Point(50, 150);
-            passwordLabel.Font = Font;
+            passwordLabel.Font = new Font("Arial", 14, FontStyle.Bold);
+            passwordLabel.ForeColor = Color.White;
             Controls.Add(passwordLabel);
 
             passwordTextBox = new TextBox();
             passwordTextBox.Size = new Size(200, 30);
             passwordTextBox.Location = new Point(150, 150);
-            passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
-            passwordTextBox.Font = Font;
+            passwordTextBox.BorderStyle = BorderStyle.None;
+            passwordTextBox.Font = new Font("Arial", 12, FontStyle.Regular);
+            passwordTextBox.BackColor = Color.FromArgb(236, 240, 241);
+            passwordTextBox.ForeColor = Color.FromArgb(44, 62, 80);
             passwordTextBox.PasswordChar = '*';
-            passwordTextBox.Margin = new Padding(0); // Установка отступов равных 0
             Controls.Add(passwordTextBox);
 
             loginButton = new Button();
@@ -71,18 +140,18 @@ namespace Sazonov_Misha_Practic
             loginButton.Location = new Point((Width - loginButton.Width) / 2, 200);
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.FlatAppearance.BorderSize = 0;
-            loginButton.BackColor = Color.FromArgb(0, 122, 204);
+            loginButton.BackColor = Color.FromArgb(231, 76, 60); // Прикольный цвет фона кнопки
             loginButton.ForeColor = Color.White;
-            loginButton.Font = Font;
+            loginButton.Font = new Font("Arial", 12, FontStyle.Bold);
             loginButton.Text = "Войти";
             loginButton.Click += LoginButton_Click;
-            loginButton.Margin = new Padding(0); // Установка отступов равных 0
             Controls.Add(loginButton);
 
             Label capsLockLabel = new Label();
             capsLockLabel.AutoSize = true;
             capsLockLabel.ForeColor = Color.Red;
             capsLockLabel.Location = new Point(passwordTextBox.Right + 5, passwordTextBox.Top);
+            capsLockLabel.Font = new Font("Arial", 10, FontStyle.Bold); // Прикольный шрифт для предупреждения о CapsLock
             capsLockLabel.Text = "CapsLock";
             capsLockLabel.Visible = false;
             Controls.Add(capsLockLabel);

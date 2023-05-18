@@ -27,6 +27,13 @@ namespace Sazonov_Misha_Practic
             this.MouseDown += Form1_MouseDown;
             this.MouseMove += Form1_MouseMove;
             this.MouseUp += Form1_MouseUp;
+            InitializeForm();
+        }
+
+        private void InitializeForm()
+        {
+            StartPosition = FormStartPosition.CenterScreen;
+            BackColor = Color.FromArgb(44, 62, 80); // Прикольный цвет фона
         }
 
         private void InitializeMenuStripDesign()
@@ -110,10 +117,7 @@ namespace Sazonov_Misha_Practic
 
         private void создатьТаблицуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateTable form2 = new CreateTable();
-            this.Hide();
-            form2.ShowDialog();
-            this.Close();
+            
         }
 
         private void удалитьТаблицуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -251,6 +255,22 @@ namespace Sazonov_Misha_Practic
             RoundedForm ip = new RoundedForm();
             ip.ShowDialog();
 
+        }
+
+        private void создатьТаблицуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CreateTable form2 = new CreateTable();
+            this.Hide();
+            form2.ShowDialog();
+            this.Close();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteTable form3 = new DeleteTable();
+            this.Hide();
+            form3.ShowDialog();
+            this.Close();
         }
     }
 }

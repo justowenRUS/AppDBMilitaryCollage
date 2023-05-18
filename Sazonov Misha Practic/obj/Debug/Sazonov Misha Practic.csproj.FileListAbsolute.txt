@@ -23,3 +23,29 @@ C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazon
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.polzovatel.resources
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vd.resources
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vid.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe.config
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.pdb
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\itextsharp.dll
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\System.Data.OleDb.dll
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\itextsharp.xml
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\bin\Debug\System.Data.OleDb.xml
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.AssemblyReference.cache
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.SuggestedBindingRedirects.cache
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Authorization.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.DeleteTable.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Form1.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.InputTable.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.polzovatel.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Properties.Resources.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.userbaza.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.userstable.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vd.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vid.resources
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.GenerateResource.cache
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CoreCompileInputs.cache
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CopyComplete
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.exe
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb
+C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.CreateTable.resources
