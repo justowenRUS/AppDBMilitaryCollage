@@ -24,10 +24,15 @@ namespace Sazonov_Misha_Practic
 
         public CreateTable()
         {
+            columnNameLabels = new List<Label>();
+            columnNameTextBoxes = new List<TextBox>();
+            dataTypeLabels = new List<Label>();
+            dataTypeComboBoxes = new List<ComboBox>();
+            columnCount = 0;
             InitializeComponent();
         }
 
-        private void CreateTable_Load_1(object sender, EventArgs e)
+    private void CreateTable_Load_1(object sender, EventArgs e)
         {
             CreateControls();
             AddCreateTableButton();
@@ -52,7 +57,7 @@ namespace Sazonov_Misha_Practic
                 Location = new System.Drawing.Point(12, 15),
                 AutoSize = true,
                 ForeColor = Color.White,
-                Font = new Font("Arial", 14, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
             };
             this.Controls.Add(tableNameLabel);
 
@@ -62,97 +67,119 @@ namespace Sazonov_Misha_Practic
                 BorderStyle = BorderStyle.None,
                 BackColor = Color.FromArgb(236, 240, 241),
                 ForeColor = Color.FromArgb(44, 62, 80),
-                Font = new Font("Arial", 12, FontStyle.Regular),
+                Font = new Font("Arial", 10, FontStyle.Regular),
             };
             this.Controls.Add(tableNameTextBox);
 
             columnCountNumericUpDown = new NumericUpDown
             {
-                Location = new System.Drawing.Point(130, 42),
-                Minimum = 1,
+                Location = new Point(180, 10),
+                Minimum = 0,
                 Maximum = 10,
-                BackColor = Color.FromArgb(44, 62, 80),
+                BackColor = Color.White,
                 ForeColor = Color.FromArgb(44, 62, 80),
-                Font = new Font("Arial", 12, FontStyle.Regular),
+                Font = new Font("Arial", 10, FontStyle.Regular),
             };
-            columnCountNumericUpDown.ValueChanged += (s, e) => UpdateColumns((int)columnCountNumericUpDown.Value);
-            this.Controls.Add(columnCountNumericUpDown);
+            columnCountNumericUpDown.ValueChanged += numericUpDown1_ValueChanged; // Привязка обработчика события
+            Controls.Add(columnCountNumericUpDown);
 
             Label columnCountLabel = new Label
             {
                 Text = "Количество столбцов:",
-                Location = new System.Drawing.Point(12, 45),
+                Location = new System.Drawing.Point(15, 45),
                 AutoSize = true,
                 ForeColor = Color.White,
-                Font = new Font("Arial", 14, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
             };
             this.Controls.Add(columnCountLabel);
+            columnCount = (int)columnCountNumericUpDown.Value;
         }
 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            int newColumnCount = (int)numericUpDown.Value;
+            UpdateColumns(newColumnCount);
+        }
 
         private void UpdateColumns(int newColumnCount)
         {
-            if (newColumnCount == columnCount)
-                return;
-
             if (newColumnCount > columnCount)
             {
-                int startingIndex = columnCount > 0 ? columnNameLabels.Count : 0;
-
-                for (int i = startingIndex; i < newColumnCount; i++)
+                for (int i = columnCount; i < newColumnCount; i++)
                 {
-                    Label columnNameLabel = new Label { Text = "Колонка:", Location = new System.Drawing.Point(12 + 150 * i, 75) };
-                    this.Controls.Add(columnNameLabel);
+                    Label columnNameLabel = new Label
+                    {
+                        Text = "Колонка:",
+                        Location = new Point(12 + 150 * i, 85 + 20),
+                        ForeColor = Color.White,
+                        Font = new Font("Arial", 12, FontStyle.Bold)
+                    };
+                    Controls.Add(columnNameLabel);
                     columnNameLabels.Add(columnNameLabel);
 
-                    TextBox columnNameTextBox = new TextBox { Location = new System.Drawing.Point(130 + 150 * i, 72) };
-                    this.Controls.Add(columnNameTextBox);
+                    TextBox columnNameTextBox = new TextBox
+                    {
+                        Location = new Point(130 + 150 * i, 72 + 20)
+                    };
+                    Controls.Add(columnNameTextBox);
                     columnNameTextBoxes.Add(columnNameTextBox);
 
-                    Label dataTypeLabel = new Label { Text = "Тип данных:", Location = new System.Drawing.Point(12 + 150 * i, 105) };
-                    this.Controls.Add(dataTypeLabel);
+                    Label dataTypeLabel = new Label
+                    {
+                        Text = "Тип данных:",
+                        Location = new Point(12 + 150 * i, 110 + 20),
+                        ForeColor = Color.White,
+                        Font = new Font("Arial", 12, FontStyle.Bold)
+                    };
+                    Controls.Add(dataTypeLabel);
                     dataTypeLabels.Add(dataTypeLabel);
 
-                    ComboBox dataTypeComboBox = new ComboBox { Items = { "INT", "VARCHAR(25)" }, DropDownStyle = ComboBoxStyle.DropDownList, Location = new System.Drawing.Point(130 + 150 * i, 102) };
-                    this.Controls.Add(dataTypeComboBox);
+                    ComboBox dataTypeComboBox = new ComboBox
+                    {
+                        Items = { "INT", "VARCHAR(25)" },
+                        DropDownStyle = ComboBoxStyle.DropDownList,
+                        Location = new Point(130 + 150 * i, 100 + 20)
+                    };
+                    Controls.Add(dataTypeComboBox);
                     dataTypeComboBoxes.Add(dataTypeComboBox);
                 }
 
-                this.Width += 90 * (newColumnCount - columnCount);
+                Width += 80 * (newColumnCount - columnCount);
             }
-            else
+            else if (newColumnCount < columnCount)
             {
                 for (int i = columnCount - 1; i >= newColumnCount; i--)
                 {
                     Label columnNameLabel = columnNameLabels[i];
-                    this.Controls.Remove(columnNameLabel);
+                    Controls.Remove(columnNameLabel);
                     columnNameLabel.Dispose();
                     columnNameLabels.RemoveAt(i);
 
                     TextBox columnNameTextBox = columnNameTextBoxes[i];
-                    this.Controls.Remove(columnNameTextBox);
+                    Controls.Remove(columnNameTextBox);
                     columnNameTextBox.Dispose();
                     columnNameTextBoxes.RemoveAt(i);
 
                     Label dataTypeLabel = dataTypeLabels[i];
-                    this.Controls.Remove(dataTypeLabel);
+                    Controls.Remove(dataTypeLabel);
                     dataTypeLabel.Dispose();
                     dataTypeLabels.RemoveAt(i);
 
                     ComboBox dataTypeComboBox = dataTypeComboBoxes[i];
-                    this.Controls.Remove(dataTypeComboBox);
+                    Controls.Remove(dataTypeComboBox);
                     dataTypeComboBox.Dispose();
                     dataTypeComboBoxes.RemoveAt(i);
                 }
 
-                this.Width -= 100 * (columnCount - newColumnCount);
+                Width -= 80 * (columnCount - newColumnCount);
             }
 
             columnCount = newColumnCount;
         }
 
         private void CreateDatabaseTable(string tableName)
-        {
+            {
             if (string.IsNullOrEmpty(tableName))
             {
                 MessageBox.Show("Введите название таблицы.");
@@ -298,6 +325,11 @@ namespace Sazonov_Misha_Practic
         private void AddCreateTableButton()
         {
             createTableButton = new Button();
+            createTableButton.FlatStyle = FlatStyle.Flat;
+            createTableButton.FlatAppearance.BorderSize = 0;
+            createTableButton.BackColor = Color.FromArgb(231, 76, 60); // Прикольный цвет фона кнопки
+            createTableButton.ForeColor = Color.White;
+            createTableButton.Font = new Font("Arial", 12, FontStyle.Bold);
             createTableButton.Text = "Создать таблицу";
             createTableButton.Location = new System.Drawing.Point((this.ClientSize.Width - createTableButton.Width) / 2, this.ClientSize.Height - createTableButton.Height - 10);
             createTableButton.Click += createTableButton_Click;

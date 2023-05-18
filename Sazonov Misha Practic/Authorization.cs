@@ -254,7 +254,7 @@ namespace Sazonov_Misha_Practic
             }
         }
 
-            private void Authorization_Load(object sender, EventArgs e)
+        private void Authorization_Load(object sender, EventArgs e)
         {
            
         }
