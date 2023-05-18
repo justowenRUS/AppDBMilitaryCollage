@@ -73,7 +73,7 @@ namespace Sazonov_Misha_Practic
 
             columnCountNumericUpDown = new NumericUpDown
             {
-                Location = new Point(180, 10),
+                Location = new Point(150, 45),
                 Minimum = 0,
                 Maximum = 10,
                 BackColor = Color.White,
@@ -106,73 +106,77 @@ namespace Sazonov_Misha_Practic
         {
             if (newColumnCount > columnCount)
             {
-                for (int i = columnCount; i < newColumnCount; i++)
+                int startingIndex = columnNameLabels.Count;
+
+                for (int i = startingIndex; i < newColumnCount; i++)
                 {
                     Label columnNameLabel = new Label
                     {
                         Text = "Колонка:",
-                        Location = new Point(12 + 150 * i, 85 + 20),
+                        Location = new System.Drawing.Point(12 + 20 * i, 85 + 20),
                         ForeColor = Color.White,
                         Font = new Font("Arial", 12, FontStyle.Bold)
                     };
-                    Controls.Add(columnNameLabel);
+                    this.Controls.Add(columnNameLabel);
                     columnNameLabels.Add(columnNameLabel);
 
                     TextBox columnNameTextBox = new TextBox
                     {
-                        Location = new Point(130 + 150 * i, 72 + 20)
+                        Location = new System.Drawing.Point(125 + 150 * i, 72 + 20) // Смещение на 20 единиц вправо
                     };
-                    Controls.Add(columnNameTextBox);
+                    this.Controls.Add(columnNameTextBox);
                     columnNameTextBoxes.Add(columnNameTextBox);
 
                     Label dataTypeLabel = new Label
                     {
                         Text = "Тип данных:",
-                        Location = new Point(12 + 150 * i, 110 + 20),
+                        Location = new System.Drawing.Point(12 + 150 * i, 110 + 20),
                         ForeColor = Color.White,
                         Font = new Font("Arial", 12, FontStyle.Bold)
                     };
-                    Controls.Add(dataTypeLabel);
+                    this.Controls.Add(dataTypeLabel);
                     dataTypeLabels.Add(dataTypeLabel);
 
                     ComboBox dataTypeComboBox = new ComboBox
                     {
                         Items = { "INT", "VARCHAR(25)" },
                         DropDownStyle = ComboBoxStyle.DropDownList,
-                        Location = new Point(130 + 150 * i, 100 + 20)
+                        Location = new System.Drawing.Point(125 + 150 * i, 100 + 20) // Смещение на 20 единиц вправо
                     };
-                    Controls.Add(dataTypeComboBox);
+                    this.Controls.Add(dataTypeComboBox);
                     dataTypeComboBoxes.Add(dataTypeComboBox);
                 }
 
-                Width += 80 * (newColumnCount - columnCount);
+                this.Width += 150 * (newColumnCount - columnCount);
             }
             else if (newColumnCount < columnCount)
             {
-                for (int i = columnCount - 1; i >= newColumnCount; i--)
+                int startIndex = newColumnCount;
+                int endIndex = columnCount - 1;
+                for (int i = endIndex; i >= startIndex; i--)
                 {
                     Label columnNameLabel = columnNameLabels[i];
-                    Controls.Remove(columnNameLabel);
+                    this.Controls.Remove(columnNameLabel);
                     columnNameLabel.Dispose();
                     columnNameLabels.RemoveAt(i);
 
                     TextBox columnNameTextBox = columnNameTextBoxes[i];
-                    Controls.Remove(columnNameTextBox);
+                    this.Controls.Remove(columnNameTextBox);
                     columnNameTextBox.Dispose();
                     columnNameTextBoxes.RemoveAt(i);
 
                     Label dataTypeLabel = dataTypeLabels[i];
-                    Controls.Remove(dataTypeLabel);
+                    this.Controls.Remove(dataTypeLabel);
                     dataTypeLabel.Dispose();
                     dataTypeLabels.RemoveAt(i);
 
                     ComboBox dataTypeComboBox = dataTypeComboBoxes[i];
-                    Controls.Remove(dataTypeComboBox);
+                    this.Controls.Remove(dataTypeComboBox);
                     dataTypeComboBox.Dispose();
                     dataTypeComboBoxes.RemoveAt(i);
                 }
 
-                Width -= 80 * (columnCount - newColumnCount);
+                this.Width -= 150 * (columnCount - newColumnCount);
             }
 
             columnCount = newColumnCount;

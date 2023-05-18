@@ -1,4 +1,6 @@
-﻿namespace Sazonov_Misha_Practic
+﻿using System.Drawing;
+
+namespace Sazonov_Misha_Practic
 {
     partial class CreateTable
     {
