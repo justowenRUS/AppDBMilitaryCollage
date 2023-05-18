@@ -22,6 +22,7 @@ namespace Sazonov_Misha_Practic
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             int count = (int)numericUpDown1.Value;
 
             for (int i = 0; i < count; i++)
@@ -69,9 +70,9 @@ namespace Sazonov_Misha_Practic
                 panel1.Controls.Add(panel);
 
                 while (panel1.Controls.Count > count)
-                    {
-                        panel1.Controls.RemoveAt(panel1.Controls.Count - 1);
-                    }
+                {
+                    panel1.Controls.RemoveAt(panel1.Controls.Count - 1);
+                }
             }
         }
 
@@ -80,20 +81,8 @@ namespace Sazonov_Misha_Practic
         {
             string tableName = textBox1.Text;
             string configFile = "config.ini";
-            string databasePath;
-
-            // Чтение значения пути из ini-файла
-            if (File.Exists(configFile))
-            {
-                IniFile ini = new IniFile(configFile);
-                databasePath = ini.GetValue("Database", "Path");
-            }
-            else
-            {
-                // Обработка ситуации, когда ini-файл отсутствует
-                // или не содержит нужных настроек
-                return;
-            }
+            ConfigReader configReader = new ConfigReader(configFile);
+            string databasePath = configReader.GetValue("Database", "Path");
 
             // Создание строки подключения к базе данных
             string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={databasePath};Persist Security Info=False";
@@ -165,17 +154,17 @@ namespace Sazonov_Misha_Practic
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -188,60 +177,8 @@ namespace Sazonov_Misha_Practic
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-           
+
         }
-    }
-    public class IniFile
-    {
-        private readonly Dictionary<string, Dictionary<string, string>> iniData;
-
-        public IniFile(string filePath)
-        {
-            iniData = new Dictionary<string, Dictionary<string, string>>();
-            string currentSection = null;
-
-            foreach (string line in File.ReadLines(filePath))
-            {
-                string trimmedLine = line.Trim();
-
-                if (string.IsNullOrWhiteSpace(trimmedLine))
-                    continue;
-
-                if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
-                {
-                    currentSection = trimmedLine.Substring(1, trimmedLine.Length - 2);
-                    iniData[currentSection] = new Dictionary<string, string>();
-                }
-                else if (currentSection != null && trimmedLine.Contains("="))
-                {
-                    string[] parts = trimmedLine.Split('=');
-                    string key = parts[0].Trim();
-                    string value = parts[1].Trim();
-                    iniData[currentSection][key] = value;
-                }
-            }
-        }
-
-        public string GetValue(string section, string key)
-        {
-            if (iniData.ContainsKey(section) && iniData[section].ContainsKey(key))
-            {
-                return iniData[section][key];
-            }
-
-            return null;
-        }
-    }
-
-
-    // Вспомогательный класс для импорта функций чтения и записи ini-файлов
-    internal static class NativeMethods
-    {
-        [DllImport("kernel32.dll")]
-        internal static extern int GetPrivateProfileString(string section, string key, string defaultValue, StringBuilder value, int size, string filePath);
-
-        [DllImport("kernel32.dll")]
-        internal static extern bool WritePrivateProfileString(string section, string key, string value, string filePath);
     }
 }
 

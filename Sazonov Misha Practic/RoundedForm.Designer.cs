@@ -1,7 +1,7 @@
 ﻿
 namespace Sazonov_Misha_Practic
 {
-    partial class Authorization
+    partial class RoundedForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,10 @@ namespace Sazonov_Misha_Practic
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Authorization
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(302, 240);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Authorization";
-            this.Text = "Авторизация";
-            this.Load += new System.EventHandler(this.Authorization_Load);
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "RoundedForm";
         }
 
         #endregion

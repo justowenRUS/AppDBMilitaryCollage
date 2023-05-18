@@ -1,34 +1,104 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Sazonov_Misha_Practic
 {
     public partial class Authorization : Form
     {
+        private TextBox usernameTextBox;
+        private TextBox passwordTextBox;
+        private Label usernameLabel;
+        private Label passwordLabel;
+        private Button loginButton;
+        private Label capsLockLabel;
+
         public Authorization()
         {
             InitializeComponent();
+            InitializeForm();
+            InitializeControls();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitializeForm()
         {
-            // Строка подключения к базе данных MDB
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
 
-            // Значения для проверки
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            BackColor = Color.White;
+            Font = new Font("Arial", 12, FontStyle.Regular);
+        }
 
-            // SQL-запрос для проверки аутентификации
+        private void InitializeControls()
+        {
+            usernameLabel = new Label();
+            usernameLabel.Text = "Ваш логин:";
+            usernameLabel.AutoSize = true;
+            usernameLabel.Location = new Point(50, 100);
+            usernameLabel.Font = Font;
+            Controls.Add(usernameLabel);
+
+            usernameTextBox = new TextBox();
+            usernameTextBox.Size = new Size(200, 30);
+            usernameTextBox.Location = new Point(150, 100);
+            usernameTextBox.BorderStyle = BorderStyle.FixedSingle;
+            usernameTextBox.Font = Font;
+            usernameTextBox.Margin = new Padding(0); // Установка отступов равных 0
+            Controls.Add(usernameTextBox);
+
+            passwordLabel = new Label();
+            passwordLabel.Text = "Пароль:";
+            passwordLabel.AutoSize = true;
+            passwordLabel.Location = new Point(50, 150);
+            passwordLabel.Font = Font;
+            Controls.Add(passwordLabel);
+
+            passwordTextBox = new TextBox();
+            passwordTextBox.Size = new Size(200, 30);
+            passwordTextBox.Location = new Point(150, 150);
+            passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
+            passwordTextBox.Font = Font;
+            passwordTextBox.PasswordChar = '*';
+            passwordTextBox.Margin = new Padding(0); // Установка отступов равных 0
+            Controls.Add(passwordTextBox);
+
+            loginButton = new Button();
+            loginButton.Size = new Size(100, 30);
+            loginButton.Location = new Point((Width - loginButton.Width) / 2, 200);
+            loginButton.FlatStyle = FlatStyle.Flat;
+            loginButton.FlatAppearance.BorderSize = 0;
+            loginButton.BackColor = Color.FromArgb(0, 122, 204);
+            loginButton.ForeColor = Color.White;
+            loginButton.Font = Font;
+            loginButton.Text = "Войти";
+            loginButton.Click += LoginButton_Click;
+            loginButton.Margin = new Padding(0); // Установка отступов равных 0
+            Controls.Add(loginButton);
+
+            Label capsLockLabel = new Label();
+            capsLockLabel.AutoSize = true;
+            capsLockLabel.ForeColor = Color.Red;
+            capsLockLabel.Location = new Point(passwordTextBox.Right + 5, passwordTextBox.Top);
+            capsLockLabel.Text = "CapsLock";
+            capsLockLabel.Visible = false;
+            Controls.Add(capsLockLabel);
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            string configFile = "config.ini";
+            ConfigReader configReader = new ConfigReader(configFile);
+            string databasePath = configReader.GetValue("Database", "Path");
+            string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={databasePath};Persist Security Info=False";
+
             string query = "SELECT Policy FROM users WHERE Log = @login AND Pass = @password";
-            string login = textBox1.Text;
-            string password = textBox2.Text;
+            string login = usernameTextBox.Text;
+            string password = passwordTextBox.Text;
+
             // Создание подключения к базе данных
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
@@ -44,11 +114,10 @@ namespace Sazonov_Misha_Practic
                     if (userCount == 0)
                     {
                         // Пользователь не найден
-                        MessageBox.Show("Пользователь не найден.");
+                        MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-
                 // Создание команды для выполнения запроса аутентификации
                 using (OleDbCommand command = new OleDbCommand(query, connection))
                 {
@@ -66,37 +135,59 @@ namespace Sazonov_Misha_Practic
                         if (policy == "Администратор")
                         {
                             // Аутентификация успешна для администратора
-                            MessageBox.Show("Вы успешно авторизованы как администратор.");
+                            MessageBox.Show("Вы успешно авторизованы как администратор", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Form1 form1 = new Form1();
-                            this.Hide();
+                            Hide();
                             form1.ShowDialog();
-                            this.Close();
+                            Close();
                             // Дополнительные действия после аутентификации администратора
                         }
                         else
                         {
                             // Аутентификация успешна для другого пользователя
-                            MessageBox.Show("Вы успешно авторизованы.");
+                            MessageBox.Show("Вы успешно авторизованы.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             userstable users = new userstable();
-                            this.Hide();
+                            Hide();
                             users.ShowDialog();
-                            this.Close();
+                            Close();
                             // Дополнительные действия после аутентификации пользователя
                         }
                     }
                     else
                     {
                         // Неправильный логин или пароль
-                        MessageBox.Show("Неправильный логин или пароль.");
+                        MessageBox.Show("Неправильный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         // Дополнительные действия в случае неверных учетных данных
+                    }
+                    if (ContainsRussianCharacters(login) || ContainsRussianCharacters(password))
+                    {
+                        MessageBox.Show("Логин и пароль не могут содержать русские символы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                 }
             }
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private bool ContainsRussianCharacters(string input)
         {
-            textBox2.UseSystemPasswordChar = true;
+            return Regex.IsMatch(input, @"\p{IsCyrillic}");
+        }
+
+        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Control.IsKeyLocked(Keys.CapsLock))
+            {
+                MessageBox.Show("Caps Lock включен. Убедитесь, что вы вводите пароль правильно.");
+                capsLockLabel.Visible = true;
+            }
+            else
+            {
+                capsLockLabel.Visible = false;
+            }
+        }
+
+            private void Authorization_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

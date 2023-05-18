@@ -22,6 +22,7 @@ namespace Sazonov_Misha_Practic
 
         private void ShowTables()
         {
+            comboBox1.Items.Clear();
             string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
             ComboBox comboBox = new ComboBox();
             // Предполагается, что у вас уже есть комбобокс comboBox
@@ -47,7 +48,10 @@ namespace Sazonov_Misha_Practic
         private void button1_Click(object sender, EventArgs e)
         {
             string tableName = comboBox1.SelectedItem.ToString();
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;Persist Security Info=False";
+            string configFile = "config.ini";
+            ConfigReader configReader = new ConfigReader(configFile);
+            string databasePath = configReader.GetValue("Database", "Path");
+            string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={databasePath};Persist Security Info=False";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {

@@ -21,8 +21,10 @@ namespace Sazonov_Misha_Practic
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            using (OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;"))
+            string configFile = "config.ini";
+            ConfigReader configReader = new ConfigReader(configFile);
+            string databasePath = configReader.GetValue("Database", "Path");
+            using (OleDbConnection connection = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={databasePath}"))
             {
                 connection.Open();
 

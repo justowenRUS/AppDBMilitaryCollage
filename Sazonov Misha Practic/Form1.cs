@@ -16,10 +16,87 @@ namespace Sazonov_Misha_Practic
 {
     public partial class Form1 : Form
     {
+        private bool isDragging = false;
+        private Point dragStartPosition;
+
         public Form1()
         {
             InitializeComponent();
+            InitializeMenuStripDesign();
+            InitializeExitButton();
+            this.MouseDown += Form1_MouseDown;
+            this.MouseMove += Form1_MouseMove;
+            this.MouseUp += Form1_MouseUp;
         }
+
+        private void InitializeMenuStripDesign()
+        {
+            // Настройка цвета фона и цвета текста для пунктов меню
+            menuStrip1.BackColor = Color.FromArgb(0, 122, 204);
+            menuStrip1.ForeColor = Color.White;
+
+            // Настройка цвета фона и цвета текста для подменю
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.BackColor = Color.FromArgb(0, 122, 204);
+                item.ForeColor = Color.White;
+
+                foreach (ToolStripDropDownItem subItem in item.DropDownItems)
+                {
+                    subItem.BackColor = Color.FromArgb(0, 122, 204);
+                    subItem.ForeColor = Color.White;
+                }
+            }
+        }
+        private void InitializeExitButton()
+        {
+            // Создаем кнопку выхода
+            Button exitButton = new Button();
+            exitButton.Text = "X";
+            exitButton.Size = new Size(23, 23);
+            exitButton.Location = new Point(this.Width - exitButton.Width - 1, 1);
+            exitButton.FlatStyle = FlatStyle.Flat;
+            exitButton.FlatAppearance.BorderSize = 0;
+            exitButton.BackColor = menuStrip1.BackColor; // Используем цвет фона меню
+            exitButton.ForeColor = Color.White;
+            exitButton.Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
+            exitButton.Click += (sender, e) => Application.Exit();
+
+            // Добавляем кнопку на форму
+            this.Controls.Add(exitButton);
+
+            // Перемещаем кнопку в передний план
+            exitButton.BringToFront();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                dragStartPosition = new Point(e.X, e.Y);
+            }
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = PointToScreen(e.Location);
+                Location = new Point(currentPosition.X - dragStartPosition.X, currentPosition.Y - dragStartPosition.Y);
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -119,7 +196,7 @@ namespace Sazonov_Misha_Practic
                 connection.Open();
 
                 // Создаем SQL-запрос для получения данных
-                string query = "SELECT * FROM users";
+                string query = "SELECT * FROM Students";
 
                 // Создаем команду
                 using (OleDbCommand command = new OleDbCommand(query, connection))
@@ -167,6 +244,13 @@ namespace Sazonov_Misha_Practic
             this.Hide();
             vivod.ShowDialog();
             this.Close();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RoundedForm ip = new RoundedForm();
+            ip.ShowDialog();
+
         }
     }
 }

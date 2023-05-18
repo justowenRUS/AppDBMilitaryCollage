@@ -61,6 +61,7 @@
     <Compile Include="Authorization.Designer.cs">
       <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigReader.cs" />
     <Compile Include="CreateTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundedForm.Designer.cs">
+      <DependentUpon>RoundedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="userbaza.cs">
       <SubType>Form</SubType>
     </Compile>
