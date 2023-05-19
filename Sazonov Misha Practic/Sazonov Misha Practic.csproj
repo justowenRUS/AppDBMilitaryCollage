@@ -74,6 +74,12 @@
     <Compile Include="DeleteTable.Designer.cs">
       <DependentUpon>DeleteTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,12 @@
     </Compile>
     <Compile Include="RoundedForm.Designer.cs">
       <DependentUpon>RoundedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SvuyazatTablitsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SvuyazatTablitsi.Designer.cs">
+      <DependentUpon>SvuyazatTablitsi.cs</DependentUpon>
     </Compile>
     <Compile Include="userbaza.cs">
       <SubType>Form</SubType>
@@ -132,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteTable.resx">
       <DependentUpon>DeleteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

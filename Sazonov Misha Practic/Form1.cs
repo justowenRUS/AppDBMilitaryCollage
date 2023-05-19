@@ -272,5 +272,21 @@ namespace Sazonov_Misha_Practic
             form3.ShowDialog();
             this.Close();
         }
+
+        private void связатьТаблицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SvuyazatTablitsi st = new SvuyazatTablitsi();
+            this.Hide();
+            st.ShowDialog();
+            this.Close();
+        }
+
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Editor editor = new Editor();
+            this.Close();
+            editor.ShowDialog();
+            this.Close();
+        }
     }
 }
