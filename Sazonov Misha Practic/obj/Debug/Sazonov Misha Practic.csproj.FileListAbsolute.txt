@@ -50,3 +50,28 @@ C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\
 C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb
 C:\Users\chebu\OneDrive\Рабочий стол\My Project\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.CreateTable.resources
 C:\Users\Студент\Desktop\Sazonov Misha Practic\AppDBMilitaryCollage\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Editor.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe.config
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.exe
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\Sazonov Misha Practic.pdb
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\itextsharp.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\System.Data.OleDb.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\itextsharp.xml
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\System.Data.OleDb.xml
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.AssemblyReference.cache
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Authorization.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.CreateTable.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.DeleteTable.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Form1.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.InputTable.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.polzovatel.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.Properties.Resources.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.userbaza.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.userstable.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vd.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.vid.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.GenerateResource.cache
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CoreCompileInputs.cache
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CopyComplete
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.exe
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb

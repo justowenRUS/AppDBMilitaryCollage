@@ -1,105 +1,233 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
 using System.Data.OleDb;
-using System.Drawing;
+using System.Windows.Forms;
 
 namespace Sazonov_Misha_Practic
 {
     public partial class Editor : Form
     {
-        private Label selectTableLabel;
-        private ComboBox tablesComboBox;
+        private ComboBox tableComboBox;
+        private ComboBox functionComboBox;
         private DataGridView dataGridView;
-        private DataTable dataTable;
-        private string connectionString;
+        private Button saveButton;
+ 
+        string connectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
 
         public Editor()
         {
-            InitializeComponent();
-            InitializeForm();
-            InitializeControls();
-            ShowTables();
+            InitializeComponents();
+            InitializeComboBoxes();
         }
 
-        private void InitializeForm()
+        private void InitializeComponents()
         {
-            Text = "Редактировать";
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            StartPosition = FormStartPosition.CenterScreen;
-            BackColor = Color.White;
-            Font = new Font("Arial", 12, FontStyle.Regular);
-        }
+            tableComboBox = new ComboBox();
+            tableComboBox.Location = new System.Drawing.Point(12, 12);
+            tableComboBox.Size = new System.Drawing.Size(200, 21);
+            tableComboBox.SelectedIndexChanged += TableComboBox_SelectedIndexChanged;
+            Controls.Add(tableComboBox);
 
-        private void InitializeControls()
-        {
-            selectTableLabel = new Label();
-            selectTableLabel.Text = "Выберите таблицу:";
-            selectTableLabel.AutoSize = true;
-            selectTableLabel.Location = new Point(50, 50);
-            selectTableLabel.Font = Font;
-            Controls.Add(selectTableLabel);
-
-            tablesComboBox = new ComboBox();
-            tablesComboBox.Size = new Size(200, 30);
-            tablesComboBox.Location = new Point(200, 50);
-            tablesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            tablesComboBox.Font = Font;
-            tablesComboBox.Margin = new Padding(0);
-            tablesComboBox.SelectedIndexChanged += TablesComboBox_SelectedIndexChanged;
-            Controls.Add(tablesComboBox);
+            functionComboBox = new ComboBox();
+            functionComboBox.Location = new System.Drawing.Point(12, 39);
+            functionComboBox.Size = new System.Drawing.Size(200, 21);
+            functionComboBox.SelectedIndexChanged += functionComboBox_SelectedIndexChanged;
+            Controls.Add(functionComboBox);
 
             dataGridView = new DataGridView();
-            dataGridView.Location = new Point(50, 100);
-            dataGridView.Size = new Size(1000, 500);
-            dataGridView.AllowUserToAddRows = true; // Разрешить добавление строк пользователем
-            dataGridView.AllowUserToDeleteRows = true; // Разрешить удаление строк пользователем
+            dataGridView.Location = new System.Drawing.Point(12, 66);
+            dataGridView.Size = new System.Drawing.Size(500, 300);
             Controls.Add(dataGridView);
+
+            saveButton = new Button();
+            saveButton.Location = new System.Drawing.Point(12, 372);
+            saveButton.Size = new System.Drawing.Size(75, 23);
+            saveButton.Text = "Сохранить";
+            saveButton.Click += SaveButton_Click;
+            Controls.Add(saveButton);
         }
 
-        private void ShowTables()
+        private void InitializeComboBoxes()
         {
-            tablesComboBox.Items.Clear();
-            connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
-
+            // Заполняем ComboBox с таблицами из базы данных
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 connection.Open();
+                DataTable tables = connection.GetSchema("Tables");
 
-                // Получение списка всех таблиц в базе данных
-                DataTable tablesSchema = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-
-                // Отображение таблиц в комбобоксе
-                foreach (DataRow row in tablesSchema.Rows)
+                foreach (DataRow row in tables.Rows)
                 {
-                    string tableName = (string)row["TABLE_NAME"];
-                    tablesComboBox.Items.Add(tableName);
+                    string tableName = row["TABLE_NAME"].ToString();
+                    tableComboBox.Items.Add(tableName);
                 }
-                connection.Close();
+            }
+
+            // Заполняем ComboBox с функциями
+            functionComboBox.Items.Add("Изменить значение");
+            functionComboBox.Items.Add("Изменить название колонки");
+        }
+
+        private void TableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Обработка изменения выбранной таблицы
+            string selectedFunction = functionComboBox.SelectedItem?.ToString();
+
+            if (selectedFunction == "Изменить значение")
+            {
+                // Отображаем все столбцы и значения из таблицы
+                string selectedTable = tableComboBox.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedTable))
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+                        string query = $"SELECT * FROM [{selectedTable}]";
+                        OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
+            }
+            else if (selectedFunction == "Изменить название колонки")
+            {
+                string selectedTable = tableComboBox.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedTable))
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+                        DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, selectedTable, null });
+                        DataTable columnNames = new DataTable();
+                        columnNames.Columns.Add("Старое название");
+                        columnNames.Columns.Add("Новое название");
+
+                        foreach (DataRow row in schemaTable.Rows)
+                        {
+                            string columnName = row["COLUMN_NAME"].ToString();
+                            columnNames.Rows.Add(columnName, "");
+                        }
+
+                        dataGridView.DataSource = columnNames;
+                    }
+                }
             }
         }
 
-        private void TablesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void functionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tableName = tablesComboBox.SelectedItem.ToString();
+            // Обработка изменения выбранной функции
+            string selectedFunction = functionComboBox.SelectedItem?.ToString();
 
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            if (selectedFunction == "Изменить значение")
             {
-                connection.Open();
-
-                // Загрузка данных из выбранной таблицы в DataTable
-                string query = $"SELECT * FROM {tableName}";
-                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
-                dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                // Привязка DataTable к DataGridView
-                dataGridView.DataSource = dataTable;
-
-                connection.Close();
+                // Отображаем все столбцы и значения из таблицы
+                string selectedTable = tableComboBox.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedTable))
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+                        string query = $"SELECT * FROM [{selectedTable}]";
+                        OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
             }
+            else if (selectedFunction == "Изменить название колонки")
+            {
+                string selectedTable = tableComboBox.SelectedItem?.ToString();
+                if (!string.IsNullOrEmpty(selectedTable))
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+                        DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, selectedTable, null });
+                        DataTable columnNames = new DataTable();
+                        columnNames.Columns.Add("Старое название");
+                        columnNames.Columns.Add("Новое название");
+
+                        foreach (DataRow row in schemaTable.Rows)
+                        {
+                            string columnName = row["COLUMN_NAME"].ToString();
+                            columnNames.Rows.Add(columnName, columnName); // Заполняем новое название со старым названием
+                        }
+
+                        dataGridView.DataSource = columnNames;
+                    }
+                }
+            }
+        }
+
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            // Сохранение изменений в базе данных
+            string selectedFunction = functionComboBox.SelectedItem?.ToString();
+            string selectedTable = tableComboBox.SelectedItem?.ToString();
+
+            if (selectedFunction == "Изменить значение")
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = $"SELECT * FROM [{selectedTable}]";
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                    OleDbCommandBuilder builder = new OleDbCommandBuilder(adapter);
+                    DataTable dataTable = (DataTable)dataGridView.DataSource;
+                    adapter.Update(dataTable);
+                }
+            }
+            else if (selectedFunction == "Изменить название колонки")
+            {
+                if (!string.IsNullOrEmpty(selectedTable))
+                {
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
+                    {
+                        connection.Open();
+                        DataTable columnNames = (DataTable)dataGridView.DataSource;
+
+                        // Создание новой таблицы с новыми названиями колонок
+                        string newTableName = $"{selectedTable}_temp";
+                        string createTableQuery = $"SELECT * INTO {newTableName} FROM {selectedTable} WHERE 1=0";
+                        OleDbCommand createTableCommand = new OleDbCommand(createTableQuery, connection);
+                        createTableCommand.ExecuteNonQuery();
+
+                        foreach (DataRow row in columnNames.Rows)
+                        {
+                            string oldColumnName = row["Старое название"]?.ToString();
+                            string newColumnName = row["Новое название"]?.ToString();
+
+                            if (!string.IsNullOrEmpty(newColumnName))
+                            {
+                                // Добавление переименованных колонок в новую таблицу
+                                string alterTableQuery = $"ALTER TABLE {newTableName} ADD COLUMN [{newColumnName}]";
+                                OleDbCommand alterTableCommand = new OleDbCommand(alterTableQuery, connection);
+                                alterTableCommand.ExecuteNonQuery();
+
+                                // Копирование данных из старой таблицы в новую таблицу
+                                string copyDataQuery = $"UPDATE {newTableName} SET [{newColumnName}] = [{oldColumnName}]";
+                                OleDbCommand copyDataCommand = new OleDbCommand(copyDataQuery, connection);
+                                copyDataCommand.ExecuteNonQuery();
+                            }
+                        }
+
+                        // Удаление старой таблицы
+                        string dropTableQuery = $"DROP TABLE {selectedTable}";
+                        OleDbCommand dropTableCommand = new OleDbCommand(dropTableQuery, connection);
+                        dropTableCommand.ExecuteNonQuery();
+
+                        // Переименование новой таблицы
+                        string renameTableQuery = $"ALTER TABLE {newTableName} RENAME TO {selectedTable}";
+                        OleDbCommand renameTableCommand = new OleDbCommand(renameTableQuery, connection);
+                        renameTableCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            MessageBox.Show("Изменения сохранены!");
         }
     }
 }
