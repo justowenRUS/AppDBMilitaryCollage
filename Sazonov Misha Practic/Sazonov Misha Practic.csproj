@@ -108,6 +108,18 @@
     <Compile Include="RoundedForm.Designer.cs">
       <DependentUpon>RoundedForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchDataBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDataBase.Designer.cs">
+      <DependentUpon>SearchDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchName.Designer.cs">
+      <DependentUpon>SearchName.cs</DependentUpon>
+    </Compile>
     <Compile Include="SvuyazatTablitsi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +177,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchDataBase.resx">
+      <DependentUpon>SearchDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchName.resx">
+      <DependentUpon>SearchName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userbaza.resx">
       <DependentUpon>userbaza.cs</DependentUpon>
     </EmbeddedResource>

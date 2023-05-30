@@ -288,5 +288,13 @@ namespace Sazonov_Misha_Practic
             editor.ShowDialog();
             this.Close();
         }
+
+        private void поискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchName sern = new SearchName();
+            this.Close();
+            sern.ShowDialog();
+            this.Close();
+        }
     }
 }

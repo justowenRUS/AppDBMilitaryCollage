@@ -37,7 +37,7 @@ namespace Sazonov_Misha_Practic
             usernameLabel = new Label();
             usernameLabel.Text = "Ваш логин:";
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(50, 100);
+            usernameLabel.Location = new Point(25, 100);
             usernameLabel.Font = new Font("Arial", 14, FontStyle.Bold); // Прикольный шрифт и стиль для метки
             usernameLabel.ForeColor = Color.White; // Прикольный цвет текста
             Controls.Add(usernameLabel);
@@ -139,9 +139,9 @@ namespace Sazonov_Misha_Practic
                         {
                             // Аутентификация успешна для администратора
                             MessageBox.Show("Вы успешно авторизованы как администратор", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Form1 form1 = new Form1();
+                            Form1 frm1 = new Form1();
                             Hide();
-                            form1.ShowDialog();
+                            frm1.ShowDialog();
                             Close();
                             // Дополнительные действия после аутентификации администратора
                         }

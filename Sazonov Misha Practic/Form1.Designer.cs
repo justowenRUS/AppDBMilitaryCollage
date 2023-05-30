@@ -42,10 +42,11 @@ namespace Sazonov_Misha_Practic
             this.вводДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выводДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вводДанныхПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связатьТаблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьТаблицуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
-            this.связатьТаблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,7 +112,7 @@ namespace Sazonov_Misha_Practic
             // редактироватьToolStripMenuItem
             // 
             this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.редактироватьToolStripMenuItem.Text = "Редактировать";
             this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
@@ -122,7 +123,8 @@ namespace Sazonov_Misha_Practic
             this.вводДанныхToolStripMenuItem,
             this.выводДанныхToolStripMenuItem,
             this.вводДанныхПользователяToolStripMenuItem,
-            this.связатьТаблицыToolStripMenuItem});
+            this.связатьТаблицыToolStripMenuItem,
+            this.поискToolStripMenuItem});
             this.работаСТаблицейToolStripMenuItem.Name = "работаСТаблицейToolStripMenuItem";
             this.работаСТаблицейToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
             this.работаСТаблицейToolStripMenuItem.Text = "Работа с таблицей";
@@ -131,30 +133,37 @@ namespace Sazonov_Misha_Practic
             // вводЗначенийToolStripMenuItem
             // 
             this.вводЗначенийToolStripMenuItem.Name = "вводЗначенийToolStripMenuItem";
-            this.вводЗначенийToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.вводЗначенийToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.вводЗначенийToolStripMenuItem.Text = "Ввод значений";
             this.вводЗначенийToolStripMenuItem.Click += new System.EventHandler(this.вводЗначенийToolStripMenuItem_Click);
             // 
             // вводДанныхToolStripMenuItem
             // 
             this.вводДанныхToolStripMenuItem.Name = "вводДанныхToolStripMenuItem";
-            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.вводДанныхToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.вводДанныхToolStripMenuItem.Text = "Ввод данных";
             this.вводДанныхToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхToolStripMenuItem_Click);
             // 
             // выводДанныхToolStripMenuItem
             // 
             this.выводДанныхToolStripMenuItem.Name = "выводДанныхToolStripMenuItem";
-            this.выводДанныхToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.выводДанныхToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.выводДанныхToolStripMenuItem.Text = "Вывод данных";
             this.выводДанныхToolStripMenuItem.Click += new System.EventHandler(this.выводДанныхToolStripMenuItem_Click);
             // 
             // вводДанныхПользователяToolStripMenuItem
             // 
             this.вводДанныхПользователяToolStripMenuItem.Name = "вводДанныхПользователяToolStripMenuItem";
-            this.вводДанныхПользователяToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.вводДанныхПользователяToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.вводДанныхПользователяToolStripMenuItem.Text = "Ввод данных пользователя";
             this.вводДанныхПользователяToolStripMenuItem.Click += new System.EventHandler(this.вводДанныхПользователяToolStripMenuItem_Click);
+            // 
+            // связатьТаблицыToolStripMenuItem
+            // 
+            this.связатьТаблицыToolStripMenuItem.Name = "связатьТаблицыToolStripMenuItem";
+            this.связатьТаблицыToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.связатьТаблицыToolStripMenuItem.Text = "Связать таблицы";
+            this.связатьТаблицыToolStripMenuItem.Click += new System.EventHandler(this.связатьТаблицыToolStripMenuItem_Click);
             // 
             // создатьТаблицуToolStripMenuItem
             // 
@@ -180,12 +189,12 @@ namespace Sazonov_Misha_Practic
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // связатьТаблицыToolStripMenuItem
+            // поискToolStripMenuItem
             // 
-            this.связатьТаблицыToolStripMenuItem.Name = "связатьТаблицыToolStripMenuItem";
-            this.связатьТаблицыToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.связатьТаблицыToolStripMenuItem.Text = "Связать таблицы";
-            this.связатьТаблицыToolStripMenuItem.Click += new System.EventHandler(this.связатьТаблицыToolStripMenuItem_Click);
+            this.поискToolStripMenuItem.Name = "поискToolStripMenuItem";
+            this.поискToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.поискToolStripMenuItem.Text = "Поиск";
+            this.поискToolStripMenuItem.Click += new System.EventHandler(this.поискToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -225,6 +234,7 @@ namespace Sazonov_Misha_Practic
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem связатьТаблицыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поискToolStripMenuItem;
     }
 }
 

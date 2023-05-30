@@ -75,3 +75,5 @@ C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Mi
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.csproj.CopyComplete
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.exe
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.SearchDataBase.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.SearchName.resources
