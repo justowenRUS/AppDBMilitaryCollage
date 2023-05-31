@@ -77,3 +77,12 @@ C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Mi
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov Misha Practic.pdb
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.SearchDataBase.resources
 C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\obj\Debug\Sazonov_Misha_Practic.SearchName.resources
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\PdfSharp.Charting.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\PdfSharp.Charting.netstandard.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\PdfSharp.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\System.Drawing.Common.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\PdfSharp.xml
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\PdfSharp.Charting.xml
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\Student\Desktop\Практика Сазонов Михаил\Sazonov Misha Practic\bin\Debug\de\PdfSharp.Charting.netstandard.resources.dll

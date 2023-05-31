@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
 using System.IO;
 
 namespace Sazonov_Misha_Practic
@@ -18,6 +18,7 @@ namespace Sazonov_Misha_Practic
     {
         private bool isDragging = false;
         private Point dragStartPosition;
+
 
         public Form1()
         {
@@ -28,6 +29,31 @@ namespace Sazonov_Misha_Practic
             this.MouseMove += Form1_MouseMove;
             this.MouseUp += Form1_MouseUp;
             InitializeForm();
+            ShowTables();
+        }
+
+        private void ShowTables()
+        {
+            comboBox1.Items.Clear();
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb";
+            ComboBox comboBox = new ComboBox();
+            // Предполагается, что у вас уже есть комбобокс comboBox
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                connection.Open();
+
+                // Получение списка всех таблиц в базе данных
+                DataTable tablesSchema = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+
+                // Отображение таблиц в комбобоксе
+                foreach (DataRow row in tablesSchema.Rows)
+                {
+                    string tableName = (string)row["TABLE_NAME"];
+                    comboBox1.Items.Add(tableName);
+                }
+                connection.Close();
+            }
         }
 
         private void InitializeForm()
@@ -179,59 +205,89 @@ namespace Sazonov_Misha_Practic
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;";
- 
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=military.mdb;Charset=utf8;";
+
             // Создаем документ PDF
-            Document document = new Document();
+            PdfDocument document = new PdfDocument();
 
-            // Указываем путь и имя файла для сохранения
-            string outputFile = "output.pdf";
-
-            // Создаем писателя PDF
-            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(outputFile, FileMode.Create));
-
-            // Открываем документ для записи
-            document.Open();
-
-            // Создаем подключение к базе данных
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            try
             {
-                // Открываем подключение к базе данных
-                connection.Open();
-
-                // Создаем SQL-запрос для получения данных
-                string query = "SELECT * FROM Students";
-
-                // Создаем команду
-                using (OleDbCommand command = new OleDbCommand(query, connection))
+                // Создаем подключение к базе данных
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
-                    // Выполняем команду и получаем результаты
-                    using (OleDbDataReader reader = command.ExecuteReader())
-                    {
-                        // Перебираем результаты и добавляем их в PDF-документ
-                        while (reader.Read())
-                        {
-                            //читаем значения
-                            string field1Value = reader.GetString(1);
-                            string field2Value = reader.GetString(2);
-                            string field3Value = reader.GetString(3);
-                            string field4Value = reader.GetString(4);
-                            string field5Value = reader.GetString(5);
+                    // Открываем подключение к базе данных
+                    connection.Open();
 
-                            // Добавляем значения полей в документ PDF
-                            document.Add(new Paragraph(field1Value));
-                            document.Add(new Paragraph(field2Value));
-                            document.Add(new Paragraph(field3Value));
-                            document.Add(new Paragraph(field4Value));
-                            document.Add(new Paragraph(field5Value));
+                    // Создаем SQL-запрос для получения данных
+                    string query = $"SELECT * FROM [{comboBox1.Text}]";
+
+                    // Создаем команду
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        // Создаем адаптер данных
+                        using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                        {
+                            // Создаем таблицу данных
+                            DataTable dataTable = new DataTable();
+
+                            // Заполняем таблицу данными из базы данных
+                            adapter.Fill(dataTable);
+
+                            // Создаем страницу PDF
+                            PdfPage page = document.AddPage();
+
+                            // Создаем объект рендеринга для рисования на странице
+                            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                            // Определяем позицию начала отображения таблицы
+                            XPoint startPoint = new XPoint(50, 50);
+
+                            // Определяем ширину и высоту ячейки
+                            double cellWidth = 100;
+                            double cellHeight = 20;
+
+                            // Определяем шрифт и размер текста
+                            XFont font = new XFont("Arial", 10);
+
+                            // Отображаем заголовки столбцов
+                            for (int columnIndex = 0; columnIndex < dataTable.Columns.Count; columnIndex++)
+                            {
+                                string columnName = dataTable.Columns[columnIndex].ColumnName;
+                                XRect cellRect = new XRect(startPoint.X + columnIndex * cellWidth, startPoint.Y, cellWidth, cellHeight);
+                                gfx.DrawString(columnName, font, XBrushes.Black, cellRect, XStringFormats.TopLeft);
+                            }
+
+                            // Отображаем данные таблицы
+                            for (int rowIndex = 0; rowIndex < dataTable.Rows.Count; rowIndex++)
+                            {
+                                for (int columnIndex = 0; columnIndex < dataTable.Columns.Count; columnIndex++)
+                                {
+                                    string cellValue = dataTable.Rows[rowIndex][columnIndex].ToString();
+                                    XRect cellRect = new XRect(startPoint.X + columnIndex * cellWidth, startPoint.Y + (rowIndex + 1) * cellHeight, cellWidth, cellHeight);
+                                    gfx.DrawString(cellValue, font, XBrushes.Black, cellRect, XStringFormats.TopLeft);
+                                }
+                            }
                         }
                     }
                 }
-            }
 
-            // Закрываем документ и освобождаем ресурсы
-            document.Close();
-        
+                // Указываем путь и имя файла для сохранения
+                string outputFile = "output.pdf";
+
+                // Сохраняем документ PDF
+                document.Save(outputFile);
+
+                MessageBox.Show("Конвертация в PDF успешно завершена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка при конвертации в PDF: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Закрываем документ и освобождаем ресурсы
+                document.Close();
+            }
         }
 
         private void выводДанныхToolStripMenuItem_Click(object sender, EventArgs e)
